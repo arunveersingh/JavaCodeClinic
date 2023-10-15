@@ -8,25 +8,6 @@ import java.nio.file.Paths;
 
 public class FileOperations {
 
-    enum OverwriteOption {
-        YES(true), NO(false);
-        private final boolean value;
-
-        OverwriteOption(boolean value){
-            this.value = value;
-        }
-    }
-    enum BackupOption {
-
-        KEEP(true), DISCARD(false);
-
-        private final boolean value;
-
-        BackupOption(boolean value){
-            this.value = value;
-        }
-    }
-
     /**
      * Copies a file from source to destination with optional overwrite and backup capabilities.
      *
@@ -36,7 +17,7 @@ public class FileOperations {
      * @param backup      If true, backup the existing destination file.
      * @throws IOException If file operations fail.
      */
-    public static void copy(String source, String destination, OverwriteOption overwrite, BackupOption backup) throws IOException {
+    public static void copy(String source, String destination, boolean overwrite, boolean backup) throws IOException {
         Path sourcePath = Paths.get(source);
         Path destPath = Paths.get(destination);
 
@@ -52,14 +33,14 @@ public class FileOperations {
         }
     }
 
-    private static void handleDestinationFile(Path destPath, OverwriteOption overwrite, BackupOption backup) throws IOException {
+    private static void handleDestinationFile(Path destPath, boolean overwrite, boolean backup) throws IOException {
         if (Files.exists(destPath)) {
-            if (backup.value) {
+            if (backup) {
                 Path backupPath = Paths.get(destPath.toString() + ".backup");
                 Files.move(destPath, backupPath);
             }
 
-            if (!overwrite.value) {
+            if (!overwrite) {
                 throw new FileAlreadyExistsException("Destination file already exists and overwrite is not permitted!");
             }
         }

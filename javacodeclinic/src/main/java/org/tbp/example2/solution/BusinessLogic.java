@@ -12,8 +12,7 @@ public class BusinessLogic {
         // ...
 
         // Copy file
-        FileOperations.copy(pathSource, pathDest,
-                FileOperations.OverwriteOption.YES, FileOperations.BackupOption.DISCARD);
+        FileOperations.copy(pathSource, pathDest, true, false);
 
         // some other business logic
         // ...
@@ -28,11 +27,13 @@ public class BusinessLogic {
         // ...
 
         // Copy file
-        FileOperations.copy(pathSource, pathDest,
-                FileOperations.OverwriteOption.NO, FileOperations.BackupOption.KEEP);
+        FileOperations.copy(pathSource, pathDest, false, true);
 
         // some other business logic
         // ...
         // ...
     }
+
+
+
 }

@@ -1,6 +1,11 @@
 package org.tbp.example6.solution;
 
 public class Patient {
+
+    // Solution: Promoting field variables to dedicated business
+    // objects. And these dedicated object provide needed methods to
+    // Provide necessary details.
+    // See: Name, HealthCondition, Age, CheckUpHistory
     private Name name;
     private HealthCondition healthCondition;
     private Age age;

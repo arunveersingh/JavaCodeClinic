@@ -3,7 +3,7 @@ package org.tbp.example3.problem;
 public class Business {
 
     // Usage
-    // Following "Tell, Don't Ask"
+    // Not following "Tell, Don't Ask"
     void execute(){
         Light light = new Light();
 

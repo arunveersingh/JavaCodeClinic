@@ -1,7 +1,7 @@
 package org.tbp.example3.problem;
 
-// Light object supporting
-// "Tell, Don't Ask"
+// Light object not supporting
+// "Ask, Then Decide"
 public class Light {
     private boolean isOn;
     public boolean getState() {

@@ -1,7 +1,7 @@
 package org.tbp.example3.solution;
 
 // Light object supporting
-// "Ask, Then Decide"
+// "Tell, Don't Ask"
 public class Light {
     private boolean isOn;
     public boolean getState() {

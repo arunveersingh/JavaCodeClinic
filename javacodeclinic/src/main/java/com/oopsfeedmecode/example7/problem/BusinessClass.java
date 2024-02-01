@@ -15,7 +15,6 @@ public class BusinessClass {
         return null;
     }
 
-    // Test the method
     public static void main(String[] args) {
         City city = new City("New York");
         Address address = new Address(city);

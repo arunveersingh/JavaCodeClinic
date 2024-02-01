@@ -1,19 +1,15 @@
 package com.oopsfeedmecode.example7.worksheet.one;
 
+import java.util.Optional;
+
 public class BusinessClass {
 
     // FIXME: Use Optional to eliminate the need of null checks
-    public String getCustomerAddress(Customer customer) {
-        if (customer != null) {
-            Address address = customer.getAddress();
-            if (address != null) {
-                City city = address.getCity();
-                if (city != null) {
-                    return city.getName();
-                }
-            }
-        }
-        return null;
+    public Optional<String> getCustomerAddress(Customer customer) {
+        return Optional.ofNullable(customer)
+                .map(Customer::getAddress)
+                .map(Address::getCity)
+                .map(City::getName);
     }
 
     // Test the method
@@ -23,10 +19,10 @@ public class BusinessClass {
         Customer customer = new Customer(address);
 
         BusinessClass business = new BusinessClass();
-        String addressName = business.getCustomerAddress(customer);
+        Optional<String> addressName = business.getCustomerAddress(customer);
         System.out.println(addressName); // Output: New York
 
-        String noAddress = business.getCustomerAddress(null);
+        Optional<String> noAddress = business.getCustomerAddress(null);
         System.out.println(noAddress); // Output: null
     }
 }
